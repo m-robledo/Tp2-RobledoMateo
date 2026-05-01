@@ -1,101 +1,167 @@
-:root {
-  --primary: #4a90e2;
-  --bg: #f4f7f6;
-}
-
-.container {
+/* 1. CONTENEDOR PRINCIPAL */
+.main-container {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: var(--bg);
-  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135s, #f5f7fa 0%, #c3cfe2 100%);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.card {
+/* 2. TARJETA (CARD) */
+.app-card {
   background: white;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.1);
-  width: 100%;
-  max-width: 400px;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  width: 380px;
+  text-align: center;
 }
 
-h1 { text-align: center; color: #333; }
-
-.input-group {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 10px;
-}
-
-input[type="text"], input[type="password"] {
-  flex: 1;
-  padding: 12px;
-  border: 2px solid #ddd;
-  border-radius: 6px;
-  font-size: 1rem;
-}
-
-.btn-ojo, .btn-copiar, .btn-generar {
-  cursor: pointer;
-  border: none;
-  border-radius: 6px;
-  transition: 0.3s;
-}
-
-.btn-copiar {
-  width: 100%;
-  padding: 10px;
-  background: var(--primary);
-  color: white;
+h1 {
+  color: #2c3e50;
   margin-bottom: 20px;
 }
 
-.fortaleza-barra {
-  height: 25px;
-  background: #eee;
-  border-radius: 12px;
-  overflow: hidden;
+/* 3. INPUT Y BOTÓN OJO */
+.input-container {
+  display: flex;
+  gap: 8px;
   margin-bottom: 15px;
 }
 
-.progreso {
+input[type="text"], 
+input[type="password"] {
+  flex: 1;
+  padding: 12px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+input:focus {
+  outline: none;
+  border-color: #3498db;
+}
+
+.btn-icon {
+  background: #f8f9fa;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #7f8c8d;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+}
+
+/* 4. BOTÓN COPIAR */
+.btn-copy {
+  width: 100%;
+  padding: 12px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 25px;
+  transition: background 0.3s;
+}
+
+.btn-copy:hover {
+  background-color: #2980b9;
+}
+
+/* 5. BARRA DE FORTALEZA */
+.barra-fondo {
+  height: 24px;
+  background-color: #ecf0f1;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.barra-progreso {
   height: 100%;
+  color: white;
+  font-size: 11px;
+  font-weight: bold;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
-  font-weight: bold;
-  font-size: 0.8rem;
-  transition: 0.5s ease;
+  transition: width 0.5s ease-in-out, background-color 0.5s;
 }
 
-.checklist {
+/* 6. LISTA DE REQUISITOS (Checklist) */
+.lista-check {
   list-style: none;
   padding: 0;
+  margin: 20px 0;
   text-align: left;
 }
 
-.checklist li {
-  margin-bottom: 5px;
-  font-size: 0.9rem;
+.lista-check li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  transition: 0.3s;
 }
 
-.cumplido { color: #2ecc71; text-decoration: line-through; }
-.pendiente { color: #888; }
+.cumplido {
+  color: #27ae60;
+  font-weight: 500;
+}
 
-.generador-panel {
-  background: #f9f9f9;
+.pendiente {
+  color: #bdc3c7;
+}
+
+.material-icons {
+  font-size: 20px;
+}
+
+/* 7. GENERADOR PRO */
+.generador-box {
+  background-color: #f8f9fa;
   padding: 15px;
-  border-radius: 8px;
-  margin-top: 20px;
+  border-radius: 12px;
+  margin-top: 10px;
+  border: 1px solid #eee;
 }
 
-.btn-generar {
-  background: #333;
-  color: white;
+.generador-box h3 {
+  font-size: 16px;
+  margin-top: 0;
+  color: #34495e;
+}
+
+.generador-box input[type="range"] {
   width: 100%;
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+.generador-box button {
+  background-color: #2c3e50;
+  color: white;
+  border: none;
   padding: 10px;
-  margin-top: 10px;
+  border-radius: 6px;
+  width: 100%;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.generador-box button:hover {
+  background-color: #1a252f;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid #eee;
+  margin: 20px 0;
 }
