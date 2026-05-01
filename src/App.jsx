@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import './App.css';
-
-// COMPONENTE 1: Item individual
 function RequisitoItem({ cumplido, texto }) {
   return (
     <li className={cumplido ? "cumplido" : "pendiente"}>
@@ -13,7 +11,6 @@ function RequisitoItem({ cumplido, texto }) {
   );
 }
 
-// COMPONENTE 2: Lista de requisitos (Ahora con 4 validaciones)
 function Checklist({ validaciones }) {
   return (
     <ul className="lista-check">
@@ -25,14 +22,13 @@ function Checklist({ validaciones }) {
   );
 }
 
-// COMPONENTE 3: Barra de fortaleza
 function BarraFortaleza({ nivel }) {
   const niveles = {
     0: { texto: "Insegura", color: "#ccc" },
     1: { texto: "Débil", color: "#ff4d4d" },
     2: { texto: "Segura", color: "#ffa500" },
     3: { texto: "Muy segura", color: "#2ecc71" },
-    4: { texto: "¡Excelente!", color: "#1d8348" } // Nivel extra por el carácter especial
+    4: { texto: "¡Excelente!", color: "#1d8348" } 
   };
 
   const actual = niveles[nivel];
@@ -48,13 +44,10 @@ function BarraFortaleza({ nivel }) {
     </div>
   );
 }
-
-// COMPONENTE 4: Generador
 function Generador({ alGenerar }) {
   const [largo, setLargo] = useState(12);
 
   function crearPassword() {
-    // Agregamos caracteres especiales a la bolsa del generador
     const letras = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*";
     let resultado = "";
     for (let i = 0; i < largo; i++) {
@@ -73,21 +66,17 @@ function Generador({ alGenerar }) {
   );
 }
 
-// COMPONENTE 5: Orquestador Principal
 export default function App() {
   const [password, setPassword] = useState("");
   const [mostrar, setMostrar] = useState(false);
   const [copiado, setCopiado] = useState(false);
-
-  // NUEVA VALIDACIÓN: Caracteres especiales
   const validaciones = {
     largo: password.length >= 8,
     numero: /\d/.test(password),
     mayuscula: /[A-Z]/.test(password),
-    especial: /[!@#$%^&*(),.?":{}|<>_]/.test(password) // Verifica símbolos
+    especial: /[!@#$%^&*(),.?":{}|<>_]/.test(password)
   };
 
-  // Contamos cuántos requisitos se cumplen
   const puntos = Object.values(validaciones).filter(Boolean).length;
 
   function copiar() {
