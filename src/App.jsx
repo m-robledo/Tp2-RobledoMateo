@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-
+/*verifico para saber que color usar y ojo de google usar*/
 function RequisitoItem({ cumplido, texto }) {
   return (
     <li className={cumplido ? "cumplido" : "pendiente"}>
@@ -45,19 +45,17 @@ function BarraFortaleza({ nivel }) {
     </div>
   );
 }
-
 function Generador({ alGenerar }) {
   const [largo, setLargo] = useState(12);
 
   function crearPassword() {
-    const letras = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*";
+    const letras = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*_-";
     let resultado = "";
     for (let i = 0; i < largo; i++) {
       resultado += letras.charAt(Math.floor(Math.random() * letras.length));
     }
     alGenerar(resultado);
   }
-
   return (
     <div className="generador-box">
       <h3>Genere una contraseña segura</h3>
@@ -67,33 +65,27 @@ function Generador({ alGenerar }) {
     </div>
   );
 }
-
 export default function App() {
   const [password, setPassword] = useState("");
   const [mostrar, setMostrar] = useState(false);
   const [copiado, setCopiado] = useState(false);
-
   const validaciones = {
     largo: password.length >= 8,
-    numero: /\d/.test(password),
+    numero: /[1234567890]/.test(password),
     mayuscula: /[A-Z]/.test(password),
     especial: /[!@#$%^&*(),.?":{}|<>_]/.test(password)
   };
-
   const puntos = Object.values(validaciones).filter(Boolean).length;
-
   function copiar() {
     if (password === "") return;
     navigator.clipboard.writeText(password);
     setCopiado(true);
     setTimeout(() => setCopiado(false), 3000);
   }
-
   return (
     <div className="main-container">
       <div className="app-card">
         <h1>Seguridad de contraseña</h1>
-
         <div className="input-container">
           <input 
             type={mostrar ? "text" : "password"} 
@@ -105,17 +97,12 @@ export default function App() {
             <span className="material-icons">{mostrar ? "visibility" : "visibility_off"}</span>
           </button>
         </div>
-
         <button className="btn-copy" onClick={copiar}>
           {copiado ? "¡Copiado!" : "Copiar Contraseña"}
         </button>
-
         <BarraFortaleza nivel={puntos} />
-        
         <Checklist validaciones={validaciones} />
-
         <hr />
-        
         <Generador alGenerar={setPassword} />
       </div>
     </div>
