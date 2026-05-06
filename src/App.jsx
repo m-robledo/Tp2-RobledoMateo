@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
+
 function RequisitoItem({ cumplido, texto }) {
   return (
     <li className={cumplido ? "cumplido" : "pendiente"}>
@@ -44,6 +45,7 @@ function BarraFortaleza({ nivel }) {
     </div>
   );
 }
+
 function Generador({ alGenerar }) {
   const [largo, setLargo] = useState(12);
 
@@ -58,7 +60,7 @@ function Generador({ alGenerar }) {
 
   return (
     <div className="generador-box">
-      <h3>Generador Pro</h3>
+      <h3>Genere una contraseña segura</h3>
       <input type="range" min="6" max="20" value={largo} onChange={(e) => setLargo(e.target.value)} />
       <p>Largo: {largo}</p>
       <button onClick={crearPassword}>Generar</button>
@@ -70,6 +72,7 @@ export default function App() {
   const [password, setPassword] = useState("");
   const [mostrar, setMostrar] = useState(false);
   const [copiado, setCopiado] = useState(false);
+
   const validaciones = {
     largo: password.length >= 8,
     numero: /\d/.test(password),
@@ -89,7 +92,7 @@ export default function App() {
   return (
     <div className="main-container">
       <div className="app-card">
-        <h1>ShieldPass</h1>
+        <h1>Seguridad de contraseña</h1>
 
         <div className="input-container">
           <input 
